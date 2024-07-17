@@ -1,15 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace ProceduralMeshes.Streams
 {
-    public class SingleStream : IMeshStreams
+    public struct SingleStream : IMeshStreams
     {
 
         [StructLayout(LayoutKind.Sequential)]
@@ -19,8 +21,11 @@ namespace ProceduralMeshes.Streams
             public float4 tangent;
             public float2 texCoord0;
         }
-
+        
+        [NativeDisableContainerSafetyRestriction]
         NativeArray<Stream0> stream_0;
+        
+        [NativeDisableContainerSafetyRestriction]
         NativeArray<int3> triangles;
 
         public void Setup(Mesh.MeshData data, int vertexCount, int indexCount)
@@ -40,6 +45,42 @@ namespace ProceduralMeshes.Streams
             meshData.subMeshCount = 1;
             meshData.SetSubMesh(0, new SubMeshDescriptor(0, indexCount));
 
+            
+            half h0 = math.half(0f), h1 = math.half(1f);
+
+            var vertex = new Vertex
+            {
+                normal = math.back(),
+                tangent = math.half4(h1, h0, h0, math.half(-1f))
+            };
+
+            NativeArray<Vertex> vertices = meshData.GetVertexData<Vertex>();
+
+            vertex.position = 0f;
+            vertex.texCoord0 = h0;
+            vertices[0] = vertex;
+
+            vertex.position = math.right();
+            vertex.texCoord0 = math.half2(h1, h0);
+            vertices[1] = vertex;
+
+            vertex.position = math.up();
+            vertex.texCoord0 = math.half2(h0, h1);
+            vertices[2] = vertex;
+
+            vertex.position = math.float3(1f, 1f, 0f);
+            vertex.texCoord0 = h1;
+            vertices[3] = vertex;
+
+ 
+            NativeArray<UInt32> triangleIndeces = meshData.GetIndexData<UInt32>();
+            triangleIndeces[0] = 0;
+            triangleIndeces[1] = 2;
+            triangleIndeces[2] = 1;
+            triangleIndeces[3] = 1;
+            triangleIndeces[4] = 2;
+            triangleIndeces[5] = 3;
+            
             stream_0 = meshData.GetVertexData<Stream0>();
             triangles = meshData.GetIndexData<int>().Reinterpret<int3>(sizeof(int));
         }

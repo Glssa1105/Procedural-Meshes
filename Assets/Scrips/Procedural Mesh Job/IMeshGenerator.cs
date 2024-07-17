@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
 namespace ProceduralMeshes
 {
     public interface IMeshGenerator
