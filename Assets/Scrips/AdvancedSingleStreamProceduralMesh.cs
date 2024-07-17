@@ -77,8 +77,8 @@ public class AdvancedSingleStreamProceduralMesh : MonoBehaviour
 
 
         var bounds = new Bounds(new Vector3(0.5f, 0.5f), new Vector3(1f, 1f));
-        //ÉèÖÃsubmesh£¬submeshÊÇmeshÏÂµÄÒ»ÏµÁĞË÷Òı£¬ÓÃÓÚÖ¸¶¨MeshÖĞµÄÒ»²¿·ÖÒÔÓÃÓÚ²»Í¬²ÄÖÊäÖÈ¾
-        //¿ÉÒÔÉèÖÃMeshUpdateFlagsÀ´¿ØÖÆsubmeshµÄÊı¾İ¸üĞÂ£¬Èç°üÎ§ºĞ¸üĞÂ£¬¹Ç÷ÀÎ»ÖÃÖØÖÃµÈ...
+        //è®¾ç½®submeshï¼Œsubmeshæ˜¯meshä¸‹çš„ä¸€ç³»åˆ—ç´¢å¼•ï¼Œç”¨äºæŒ‡å®šMeshä¸­çš„ä¸€éƒ¨åˆ†ä»¥ç”¨äºä¸åŒæè´¨æ¸²æŸ“
+        //å¯ä»¥è®¾ç½®MeshUpdateFlagsæ¥æ§åˆ¶submeshçš„æ•°æ®æ›´æ–°ï¼Œå¦‚åŒ…å›´ç›’æ›´æ–°ï¼Œéª¨éª¼ä½ç½®é‡ç½®ç­‰...
         meshData.subMeshCount = 1;
         meshData.SetSubMesh(0, new SubMeshDescriptor(0, triangleIndexCount)
         {

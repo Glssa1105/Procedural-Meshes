@@ -226,8 +226,8 @@ GameObject:
   m_Component:
   - component: {fileID: 845684880}
   - component: {fileID: 845684879}
-  - component: {fileID: 845684878}
   - component: {fileID: 845684881}
+  - component: {fileID: 845684878}
   m_Layer: 0
   m_Name: Muilt StreamProceduralMesh
   m_TagString: Untagged
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 845684876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce01fd5cc467380459db79f9c8b1ca7c, type: 3}
+  m_Script: {fileID: 11500000, guid: ee45c1a0f8c040d587b04e82852d524a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &963194225

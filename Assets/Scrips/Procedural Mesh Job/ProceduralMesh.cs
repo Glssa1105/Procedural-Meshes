@@ -26,6 +26,7 @@ public class ProceduralMesh : MonoBehaviour
                 Mesh.MeshData meshData = meshDataArray[0];
                 
                 MeshJob<SquareGrid,SingleStream>.ScheduleParallel(meshData,default).Complete();
+
                 Mesh.ApplyAndDisposeWritableMeshData(meshDataArray,mesh);
         }
 }
